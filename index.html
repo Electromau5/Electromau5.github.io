@@ -1,525 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Consumer Healthcare Project</title>
-    <script src="game.js"></script>
-    <link rel="stylesheet" type="text/css" href="game.css">
-</head>
-<style>
-
-  /* The Modal (background) */
-  .modal 
-  {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4);
-  }
-
-  /* Modal Content */
-  .modal-content 
-  {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 40%;
-  }
-
+    <script src="practice.js"></script>
+    <link rel="stylesheet" type="text/css" href="practice.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <script>
   
-    /**
-    body
-    {
-      background-image: url("images/panel.png");
+  </script>
+  <script>
+    /** Instructions **/
+    function load() {
+      var instructions = document.getElementById("instructions");
+      var comp = document.getElementById("competition");
+      var col = document.getElementById("collaboration");   
+      var comp_step = document.getElementById("comp_step");
+      var col_step = document.getElementById("col_step");
+      var count = document.getElementById("comp_step").innerHtml = "3..2..1";
+      var system = document.getElementById("system");
+      var user = document.getElementById("user");
     }
-    **/
     
-    #user
+    function comp() {  
+      instructions.style.display = "none";
+      comp_step.style.display = "block";
+    }
+
+    function col() {
+      instructions.style.display = "none"; 
+      col_step.style.display = "block";
+    }
+
+    function start()
     {
-        width: 250px;
-        height: 200px;
-        position: absolute;
-        -moz-transition : all 0.8s ease 0s;
-        transition: 0.5s ease 0s;
-        display: block;
+      comp_step.style.display = "none";
+      document.getElementById("letters").style.display = "block";
+      document.getElementById("letters_text").style.display = "block";
+      document.getElementById("ready").style.display = "block";
 
     }
 
-    #system
+    function ready()
     {
-        width: 250px;
-        height: 200px;
-        position: absolute;
-        -moz-transition : all 0.8s ease 0s;
-        transition: 0.5s ease 0s;
-        margin-top: 300px;
-        -moz-transform: scaleX(-1);
-        -o-transform: scaleX(-1);
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-        filter: FlipH;
-        -ms-filter: "FlipH";
-        animation: mymove 30s infinite;
+      document.getElementById("letters").style.display = "none";
+      document.getElementById("letters_text").style.display = "none";
+      document.getElementById("ready").style.display = "none";
+      document.getElementById("question-1").style.display = "block";
+      system.classList.add('system');
     }
 
-    @-webkit-keyframes mymove 
+    function true1()
     {
-      from {left: 0px;}
-      to {left: 1000px;}
+      var pos = 0;
+      pos += 200;
+      user.style.left = pos + 'px';
+      document.getElementById("question-1").style.display = "none";
+      document.getElementById("question-2").style.display = "block";
+
     }
 
-    @keyframes mymove 
+    function false2()
     {
-      from {left: 0px;}
-      to {left: 1000px;}
-  }
-
-    #button-1
-    {
-        margin-top: 200px;
-        position: absolute;
-        padding: 15px;
-        font-size: 18px;
-  
-  
+      var pos = 200;
+      pos += 200;
+      user.style.left = pos + 'px';
+      document.getElementById("question-2").style.display = "none";
+      document.getElementById("question-3").style.display = "block";
     }
 
-    #button-2
+    function true3()
     {
-        margin-top: 200px;
-        position: absolute;
-        margin-left: 150px;
-        padding: 15px;
-        font-size: 18px;
-    
+      var pos = 400;
+      pos += 200;
+      user.style.left = pos + 'px';
+      document.getElementById("question-3").style.display = "none";
+      document.getElementById("question-4").style.display = "block";
     }
 
-    #button-3
+    function false4()
     {
-        margin-top: 200px;
-        position: absolute;
-        margin-left: 300px;
-        padding: 15px;
-        font-size: 18px;
+      var pos = 600;
+      pos += 200;
+      user.style.left = pos + 'px';
+      document.getElementById("question-4").style.display = "none";
+      document.getElementById("question-5").style.display = "block";
     }
 
-    #button-4
+    function true5()
     {
-        margin-top: 200px;
-        position: absolute;
-        margin-left: 450px;
-        padding: 15px;
-        font-size: 18px;
+      var pos = 800;
+      pos += 200;
+      user.style.left = pos + 'px';
+      document.getElementById("question-5").style.display = "none";
+      document.getElementById("winning-message").style.display = "block";
     }
 
-    #button-5
+    function menu()
     {
-        margin-top: 200px;
-        position: absolute;
-        margin-left: 600px;
-        padding: 15px;
-        font-size: 18px;
+      document.getElementById("instructions").style.display = "block";
+      document.getElementById("winning-message").style.display = "none";
+      system.classList.remove('system');
+      user.style.left = 0 + 'px'; 
     }
 
-    #q1-A
-    {
-      border: 1px solid #000;
-      position: absolute;
-      margin-top: 260px;
-      float: left;
-      width: 50px;
-      font-size: 25px;
-      height: 50px;
-    }
-
-    #q1-B
-    {
-      border: 1px solid #000;
-      position: absolute;
-      margin-top: 260px;
-      margin-left: 100px;
-      width: 50px;
-      font-size: 25px;
-      height: 50px;
-    }
-
-    #q1-C
-    {
-      border: 1px solid #000;
-      position: absolute;
-      margin-top: 260px;
-      margin-left: 200px;
-      width: 50px;
-      font-size: 25px;
-      height: 50px;
-    }
-
-    #q1-D
-    {
-      border: 1px solid #000;
-      position: absolute;
-      margin-top: 260px;
-      margin-left: 300px;
-      width: 50px;
-      font-size: 25px;
-      height: 50px;
-    }
-
-    #q1-E
-    {
-      border: 1px solid #000;
-      position: absolute;
-      margin-top: 260px;
-      margin-left: 400px;
-      width: 50px;
-      font-size: 25px;
-      height: 50px;
-    }
-/*
-    #image-1A
-    {
-      width: 200px;
-      height: 200px;
-      display: none;
-      position: absolute;
-      margin-top: 230px;
-      margin-left: 200px;
-    }
-  
-*/
-
-#point
-{
-  width: 100%;
-  margin-left: 20px;
-}
-
-#question-1
-{
-  float: right;
-  margin-top: 120px;
-  display: inline-block;
-  border: 1px solid #000;
-  padding: 25px;
-  border-radius: 10px;
-  display: none;
-  font-size: 18px;
-}
-
-
-#question-2
-{
-  float: right;
-  margin-top: 120px;
-  display: inline-block;
-  border: 1px solid #000;
-  padding: 25px;
-  border-radius: 10px;
-  display: none;
-}
-
-#question-3
-{
-  float: right;
-  margin-top: 120px;
-  display: inline-block;
-  border: 1px solid #000;
-  padding: 25px;
-  border-radius: 10px;
-  display: none;
-}
-
-#question-4
-{
-  float: right;
-  margin-top: 120px;
-  display: inline-block;
-  border: 1px solid #000;
-  padding: 25px;
-  border-radius: 10px;
-  display: none;
-}
-
-#question-5
-{
-  float: right;
-  margin-top: 120px;
-  display: inline-block;
-  border: 1px solid #000;
-  padding: 25px;
-  border-radius: 10px;
-  display: none;
-}
-
-#submit
-{
-    margin-top: 200px;
-    position: absolute;
-    margin-left: 750px;
-    padding: 15px;
-    font-size: 18px;
-    background-color: blue;
-    color: #fff;
-    border-radius: 5px;
-    border: none;
-}
-
-</style>
-<script>
-  
-  function submit()
-  {
-    var modal = document.getElementById("myModal");  
-    var button1 = document.getElementById("button-1");
-    var button2 = document.getElementById("button-2");
-    var button3 = document.getElementById("button-3");
-    var button4 = document.getElementById("button-4");
-    var button5 = document.getElementById("button-5");
-    if (button1.style.background == "green" 
-        && button2.style.background == "green" 
-        && button3.style.background == "green" 
-        && button4.style.background == "green" 
-        && button5.style.background == "green")
-    {
-      modal.style.display = "block";
-    }
-    else
-    {
-      alert("Loser's Badge");
-    }
-  }
-  
-
-  function q1()
-  {
-    var q1 = document.getElementById("question-1");
-    var q2 = document.getElementById("question-2");
-    var q3 = document.getElementById("question-3");
-    var q4 = document.getElementById("question-4");
-    var q5 = document.getElementById("question-5");
-    q1.style.display = "inline-block";
-    q2.style.display = "none";
-    q3.style.display = "none";
-    q4.style.display = "none";
-    q5.style.display = "none";
-  }
-  function q2()
-  {
-    var q1 = document.getElementById("question-1");
-    var q2 = document.getElementById("question-2");
-    var q3 = document.getElementById("question-3");
-    var q4 = document.getElementById("question-4");
-    var q5 = document.getElementById("question-5");
-    q1.style.display = "none";
-    q2.style.display = "inline-block";
-    q3.style.display = "none";
-    q4.style.display = "none";
-    q5.style.display = "none";
-  }
-  function q3()
-  {
-    var q1 = document.getElementById("question-1");
-    var q2 = document.getElementById("question-2");
-    var q3 = document.getElementById("question-3");
-    var q4 = document.getElementById("question-4");
-    var q5 = document.getElementById("question-5");
-    q1.style.display = "none";
-    q2.style.display = "none";
-    q3.style.display = "inline-block";
-    q4.style.display = "none";
-    q5.style.display = "none";
-  }
-  function q4()
-  {
-    var q1 = document.getElementById("question-1");
-    var q2 = document.getElementById("question-2");
-    var q3 = document.getElementById("question-3");
-    var q4 = document.getElementById("question-4");
-    var q5 = document.getElementById("question-5");
-    q1.style.display = "none";
-    q2.style.display = "none";
-    q3.style.display = "none";
-    q4.style.display = "inline-block";
-    q5.style.display = "none";
-  }
-  function q5()
-  {
-    var q1 = document.getElementById("question-1");
-    var q2 = document.getElementById("question-2");
-    var q3 = document.getElementById("question-3");
-    var q4 = document.getElementById("question-4");
-    var q5 = document.getElementById("question-5");
-    q1.style.display = "none";
-    q2.style.display = "none";
-    q3.style.display = "none";
-    q4.style.display = "none";
-    q5.style.display = "inline-block";
-  }
-
-  
-
-  /** Answer D **/
-  function firstMove()
-    {
-      var q1= document.getElementById("question-1");
-      var button = document.getElementById("button-1");
-        var pos = 0;
-        var elem = document.getElementById("user");   
-        if (q1.style.display == "inline-block")
-          {
-              pos += 150; 
-              elem.style.left = pos + 'px'; 
-              button.style.background = "green";
-              button.style.color = "white";
-          }
-          
-    }
-
-  /** Answer A **/
-  function secondMove()
-    {
-      var q2= document.getElementById("question-2");
-      var button = document.getElementById("button-2");
-        var pos = 0;
-        var elem = document.getElementById("user");   
-        if (q2.style.display == "inline-block")
-          {
-              pos += 300; 
-              elem.style.left = pos + 'px'; 
-              button.style.background = "green";
-              button.style.color = "white";
-          }
-    }
-
-  /** Answer B **/
-  function thirdMove()
-    {
-        var q3 = document.getElementById("question-3");
-        var button = document.getElementById("button-3");
-        var pos = 0;
-        var elem = document.getElementById("user");   
-        if (q3.style.display == "inline-block")
-          {
-              pos += 550; 
-              elem.style.left = pos + 'px'; 
-              button.style.background = "green";
-              button.style.color = "white";
-          }
-        }
-
-  /** Answer C **/
-    function fourthMove() {
-
-      var q4 = document.getElementById("question-4");
-      var button = document.getElementById("button-4");
-        var pos = 0;
-        var elem = document.getElementById("user");   
-        if (q4.style.display == "inline-block")
-          {
-              pos += 800; 
-              elem.style.left = pos + 'px'; 
-              button.style.background = "green";
-              button.style.color = "white";
-          }
-        }
-
-/** Answer E **/
-
-    function fifthMove() {
-  
-    var q5 = document.getElementById("question-5");
-    var button = document.getElementById("button-5");
-    var pos = 0;
-    var elem = document.getElementById("user");   
-      if (q5.style.display == "inline-block")
-        {
-          pos += 1000; 
-          elem.style.left = pos + 'px'; 
-          button.style.background = "green";
-          button.style.color = "white";
-        }
-      }
-    
-      
-        </script>
-<body>
+    window.onload = load;
+  </script>
+  <body>
     <div id="container">
-        <img id="point" src="images/points.png">
-        <img  id="user" src="images/user.gif">
-        <img  id="system" src="images/system.gif">
-    </div>
-    <div class="buttons" style="width:70%">
-      <button id="button-1" onclick="q1()">Question 1</button> 
-      <button id="button-2" onclick="q2()">Question 2</button> 
-      <button id="button-3" onclick="q3()">Question 3</button> 
-      <button id="button-4" onclick="q4()">Question 4</button> 
-      <button id="button-5" onclick="q5()">Question 5</button> 
-      <button id="submit" onclick="submit()">Submit</button>
-
-      <div id="myModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <img  id="gold" src="images/gold.png">
+      <div id="instructions">
+        <h4>Instructions</h4>
+        <ol>
+          <li>This is your competitor / collaborator</li>
+          <li>You need to either beat or collaborate with them</li>
+          <li>There are two game types - COMPETITION and COLLABORATION</li>
+          <li>
+            Click on the one you want to play first (We recommend you play
+            COMPETITION
+          </li>
+        </ol>
+        <button id="competition" class="btn btn-primary" onclick="comp()">
+          PLAY COMPETITION
+        </button>
+        <button id="collaboration" class="btn btn-primary" onclick="col()">
+          PLAY COLLABORATION
         </div>
-
       </div>
-
-    </div>
-    <button id="q1-A" onclick="secondMove()">A</button>
-    <button id="q1-B" onclick="thirdMove()">B</button>
-    <button id="q1-C" onclick="fourthMove()">C</button>
-    <button id="q1-D" onclick="firstMove()">D</button>
-    <button id="q1-E" onclick="fifthMove()">E</button>
-
-    <div id="question-1">
-        Which food group is associated with milk?<br>
-        A. Meat<br>
-        B. Vegetables<br>
-        C. Fruit<br>
-        D. Dairy<br>
-        E. Legumes
-    </div>
-    <div id="question-2">
-        How many hours of sleep does an adult need a day?<br>
-        A. 8 hours<br>
-        B. 2 hours<br>
-        C. 1 hour<br>
-        D. 12 hours<br>
-        E. No sleep
-    </div>
-    <div id="question-3">
-        How do you control diabetes?<br>
-        A. Water<br>
-        B. Insulin<br>
-        C. Adrenaline<br>
-        D. Fruits<br>
-        E. Sugar
-    </div>
-    <div id="question-4">
-        Which activity leads to lung cancer?<br>
-        A. Drinking<br>
-        B. Running<br>
-        C. Smoking<br>
-        D. Eating<br>
-        E. Watching T.V.
-     </div>
-     <div id="question-5">
-        Excessive drinking damages which organ?<br>
-        A. Heart<br>
-        B. Lungs<br>
-        C. Brain<br>
-        D. Stomach<br>
-        E. Liver
+      <div id="comp_step" style="display:none">
+        <h4>COMPETITION</h4>
+        <ol>
+          <li>
+            You need to reach the destination before your competitor does
+          </li>
+          <li>
+            The way you do it is by answering TRUE or FALSE questions about a random set of letters
+          </li>
+          <li>Ready to try?</li><br />
+          <div class="btn btn-primary" onclick="start()">START</div>
+        </ol>
       </div>
-</body>
+      <div id="ready">
+        <div class="btn btn-primary" onclick="ready()">I'M READY</div>
+      </div>
+      <div id="col_step" style="display:none">
+          <h4>COLLABORATION</h4>
+          <ol>
+            <li>You and your system's avatar need to reach the destination to win</li>
+            <li>The way you do it is by answering TRUE or FALSE questions about random appearing letters. Remember those?</li>
+            <li>You will need to answer questions not only for yourself, but for the system as wells</li>
+            <li>If you answer all questions correctly your team WINS</li>
+            <li>Ready to try?</li><br />
+            <div class="btn btn-primary" onclick="start()">START</div>
+          </ol>
+        </div>
+      <img id="point" src="images/points.png" />
+      <img id="user" src="avatars/animal.gif" />
+      <div id="letters_text">Remember the position of these letters (write them down if you need to)</div><br />
+      <img id="letters" src="images/alphabets/PUSAK.png">
+      <div id="question-1">
+        <div class="question">Was the first letter 'P'?</div> <br />
+        <button class="true btn btn-primary" onclick="true1()">TRUE</button>
+        <button class="false btn btn-primary" onclick="false1()">FALSE</button>
+      </div>
+      <div id="question-2">
+        <div class="question">Was the second letter 'X'?</div> <br />
+        <button class="true btn btn-primary" onclick="true2()">TRUE</button>
+        <button class="false btn btn-primary" onclick="false2()">FALSE</button>
+      </div>
+      <div id="question-3">
+        <div class="question">Was the third letter 'S'?</div> <br />
+        <button class="true btn btn-primary" onclick="true3()">TRUE</button>
+        <button class="false btn btn-primary" onclick="false3()">FALSE</button>
+      </div>
+      <div id="question-4">
+        <div class="question">Was the fourth letter 'Z'?</div> <br />
+        <button class="true btn btn-primary" onclick="true4()">TRUE</button>
+        <button class="false btn btn-primary" onclick="false4()">FALSE</button>
+      </div>
+      <div id="question-5">
+        <div class="question">Was the fifth letter 'K'?</div> <br />
+        <button class="true btn btn-primary" onclick="true5()">TRUE</button>
+        <button class="false btn btn-primary" onclick="false5()">FALSE</button>
+      </div>
+      <div id="winning-message">
+        GREAT JOB. YOU WON.<br />
+        <button class="true btn btn-primary" onclick="menu()">MAIN MENU</button>
+      </div>
+      <img id="system" src="images/system.gif" />
+    </div>
+  </body>
 </html>
