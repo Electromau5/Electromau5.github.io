@@ -13,6 +13,7 @@
 }
 
 /* Modal Content */
+
 .modal-content {
   background-color: #fefefe;
   margin: auto;
@@ -20,18 +21,26 @@
   border: 1px solid #888;
   width: 40%;
 }
-/**
 
- Winning-Message
-
- **/
+/**  Winning-Message **/
 
 #winning-message {
   display: none;
   margin-left: 40%;
   font-weight: bold;
   font-size: 50px;
+  margin-top: 10%;
 }
+
+
+#winning-team-message {
+  display: none;
+  margin-left: 40%;
+  font-weight: bold;
+  font-size: 50px;
+  margin-top: 10%;
+}
+
 /**
   body
   {
@@ -39,11 +48,7 @@
   }
   **/
 
-/**
-
-Instructions
-
-**/
+/** Instructions **/
 
 #instructions {
   position: absolute;
@@ -81,13 +86,40 @@ Instructions
   line-height: 3em;
 }
 
+.step
+{
+  font-size: 20px;
+  font-family: 'Cabin', sans-serif;
+}
+
 /** Buttons **/
+
+#competition, #collaboration
+{
+  padding: 20;
+  font-family: 'Bangers', cursive;
+}
 
 #ready {
   position: absolute;
   margin-top: 20%;
   margin-left: 75%;
   display: none;
+  font-family: 'Bangers', cursive;
+}
+
+#ready_collab {
+  position: absolute;
+  margin-top: 20%;
+  margin-left: 75%;
+  display: none;
+  font-family: 'Bangers', cursive;
+}
+
+.start
+{
+  padding: 20;
+  font-family: 'Bangers', cursive;
 }
 
 /** Game Assets **/
@@ -158,7 +190,7 @@ Instructions
 }
 
 .system {
-  animation: mymove 30s infinite;
+  animation: mymove 20s;
 }
 
 @-webkit-keyframes mymove {
@@ -166,7 +198,7 @@ Instructions
     left: 0px;
   }
   to {
-    left: 1000px;
+    left: 1200px;
   }
 }
 
@@ -175,7 +207,7 @@ Instructions
     left: 0px;
   }
   to {
-    left: 1000px;
+    left: 1200px;
   }
 }
 
@@ -285,11 +317,21 @@ Instructions
   margin-left: 20px;
 }
 
+#question-1c,
+#question-2c,
+#question-3c,
+#question-4c,
+#question-5c,
 #question-1,
 #question-2,
 #question-3,
 #question-4,
-#question-5 {
+#question-5,
+#question-1a,
+#question-2a,
+#question-3a,
+#question-4a,
+#question-5a {
   margin-left: 40%;
   margin-top: 8%;
   display: inline-block;
